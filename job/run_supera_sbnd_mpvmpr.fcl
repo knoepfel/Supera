@@ -5,7 +5,6 @@
 #include "services_sbnd.fcl"
 #include "simulationservices_sbnd.fcl"
 #include "rootoutput_sbnd.fcl"
-#include "simplemerge.fcl" 
 
 process_name: supera
 
@@ -27,7 +26,6 @@ physics:
  {
    rns:      { module_type: "RandomNumberSaver" }
    cluster3d: @local::standard_cluster3d
-   simplemerge: @local::simplemerge
  }
  analyzers:
  { supera: {
@@ -40,7 +38,7 @@ physics:
             }
  }
 
- simulate: [ rns, simplemerge, cluster3d] # you DO want to run cluster3d            
+ simulate: [ rns, cluster3d] # you DO want to run cluster3d            
  analyze:  [ supera ] # that's ok
  stream:  [ out1 ]
  trigger_paths: [ simulate ]
@@ -58,12 +56,6 @@ outputs:
 }
 
 services.TFileService.fileName: "ana.root"
-
-# 
-# MCParticle Merger
-#
-
-physics.producers.simplemerge.InputSourcesLabels: ["largeant","largeant:droppedMCParticles"]
 
 services.message.destinations :
 {
