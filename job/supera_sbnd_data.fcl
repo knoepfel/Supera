@@ -6,8 +6,8 @@ ProcessDriver: {
   Verbosity:    2
   EnableFilter: true
   RandomAccess: false
-  ProcessType:  ["SuperaMCTruth","SuperaBBoxInteraction","SuperaMCParticleCluster","SuperaSimEnergyDeposit","SuperaSpacePoint","SuperaOptical","Tensor3DFromCluster3D","CombineTensor3D","ThresholdTensor3D","CombineTensor3D","ParticleCorrector","EmptyTensorFilter","RescaleChargeTensor3D"]
-  ProcessName:  ["MultiPartVrtx","SuperaBBoxInteraction","SuperaMCParticleCluster","SuperaSimEnergyDeposit","SuperaSpacePoint","SuperaOptical","Tensor3DFromCluster3D","CombineTensor3DGhost","ThresholdTensor3D","CombineTensor3D","ParticleCorrector","EmptyTensorFilter","RescaleChargeTensor3D"]
+  ProcessType:  ["SuperaBBoxInteraction","SuperaSpacePoint","SuperaOptical"]
+  ProcessName:  ["SuperaBBoxInteraction","SuperaSpacePoint","SuperaOptical"]
 
   IOManager: {
     Verbosity:   2
@@ -95,17 +95,16 @@ ProcessDriver: {
 
     MultiPartVrtx: {
       Verbosity: 2
-      #LArMCTruthProducer: "generator"
-      MCTruthProducers: ["generator","rain","rain2"]
+      LArMCTruthProducer: "generator"
       OutParticleLabel: "mpv"
       Origin: 0
     }
-    # MultiPartRain: {
-    #   Verbosity: 2
-    #   LArMCTruthProducer: "rain"
-    #   OutParticleLabel: "mpr"
-    #   Origin: 0
-    # }
+    MultiPartRain: {
+      Verbosity: 2
+      LArMCTruthProducer: "corsika"
+      OutParticleLabel: "mpr"
+      Origin: 0
+    }
 
     SuperaBBoxInteraction: {
       Verbosity: 2
