@@ -53,7 +53,6 @@ outputs:
  }
 }
 
-
 services.message.destinations :
 {
   STDCOUT:
